@@ -94,14 +94,6 @@ namespace CapaPresentacion
         private void dataListado_DoubleClick(object sender, EventArgs e)
         {
       
-            frmProducto.f1.txtProductoCompuesto.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Nombre"].Value);
-            frmProducto.f1.txtPrecioVentaCompues.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Precio_Venta"].Value);
-            frmProducto.f1.lblIdProdIns.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Codigo"].Value);
-            frmProducto.f1.lblTipoProducto.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Tipo"].Value);
-            frmProducto.f1.txtCantidad.Text = string.Empty;
-            frmProducto.f1.txtCantidad.ReadOnly = false;
-            frmProducto.f1.txtCantidad.Focus();
-            this.Hide();
         }
 
         private void rbNombre_CheckedChanged(object sender, EventArgs e)
@@ -114,6 +106,19 @@ namespace CapaPresentacion
         {
             txtBuscar.Clear();
             txtBuscar.Select();
+        }
+
+        private void dataListado_Click(object sender, EventArgs e)
+        {
+
+            frmProducto.f1.txtProductoCompuesto.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Nombre"].Value);
+            frmProducto.f1.txtPrecioVentaCompues.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Precio_Venta"].Value);
+            frmProducto.f1.lblIdProdIns.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Codigo"].Value);
+            frmProducto.f1.lblTipoProducto.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Tipo"].Value);
+            frmProducto.f1.txtCantidad.Text = string.Empty;
+            frmProducto.f1.txtCantidad.ReadOnly = false;
+            frmProducto.f1.txtCantidad.Focus();
+            this.Close();
         }
     }
 }

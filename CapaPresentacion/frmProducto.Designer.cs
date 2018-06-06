@@ -58,6 +58,8 @@
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.lblTipo = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.txtStockActual = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.cbUnidad = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -93,8 +95,6 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txtStockActual = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             this.tabControl2.SuspendLayout();
@@ -394,12 +394,12 @@
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscar.Font = new System.Drawing.Font("Roboto", 12.30769F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuscar.ForeColor = System.Drawing.Color.Navy;
-            this.txtBuscar.Location = new System.Drawing.Point(20, 74);
+            this.txtBuscar.Location = new System.Drawing.Point(20, 73);
             this.txtBuscar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(794, 26);
+            this.txtBuscar.Size = new System.Drawing.Size(794, 34);
             this.txtBuscar.TabIndex = 1;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
@@ -449,6 +449,29 @@
             this.tabPage3.TabIndex = 1;
             this.tabPage3.Text = "Nuevo/Modificar";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // txtStockActual
+            // 
+            this.txtStockActual.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtStockActual.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStockActual.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.txtStockActual.Location = new System.Drawing.Point(115, 416);
+            this.txtStockActual.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtStockActual.MaxLength = 11;
+            this.txtStockActual.Name = "txtStockActual";
+            this.txtStockActual.Size = new System.Drawing.Size(98, 30);
+            this.txtStockActual.TabIndex = 8;
+            this.txtStockActual.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStockActual_KeyPress);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Roboto", 9.230769F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(5, 426);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(96, 20);
+            this.label15.TabIndex = 63;
+            this.label15.Text = "Stock Actual";
             // 
             // cbUnidad
             // 
@@ -672,6 +695,7 @@
             this.txtCantidad.ReadOnly = true;
             this.txtCantidad.Size = new System.Drawing.Size(98, 30);
             this.txtCantidad.TabIndex = 58;
+            this.txtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidad_KeyPress);
             // 
             // txtPrecioVentaCompues
             // 
@@ -912,29 +936,6 @@
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Roboto", 9.230769F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(5, 426);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(96, 20);
-            this.label15.TabIndex = 63;
-            this.label15.Text = "Stock Actual";
-            // 
-            // txtStockActual
-            // 
-            this.txtStockActual.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtStockActual.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStockActual.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.txtStockActual.Location = new System.Drawing.Point(115, 416);
-            this.txtStockActual.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtStockActual.MaxLength = 11;
-            this.txtStockActual.Name = "txtStockActual";
-            this.txtStockActual.Size = new System.Drawing.Size(98, 30);
-            this.txtStockActual.TabIndex = 8;
-            this.txtStockActual.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStockActual_KeyPress);
             // 
             // frmProducto
             // 
