@@ -261,7 +261,7 @@ namespace CapaPresentacion
                 string rpta = "";
                 string tipo = "";
                 int idCategoria, idUnidad;
-                int stock = 0;
+                decimal stock = 00.00m;
                 decimal stockMinimo = 00.00m;
                 string sTexto = "";
                 string imprimir = "";
@@ -327,7 +327,7 @@ namespace CapaPresentacion
 
                         if(txtStockActual.Text.Trim() != "")
                         {
-                            stock = Convert.ToInt32(txtStockActual.Text.Trim());
+                            stock = Convert.ToDecimal(txtStockActual.Text.Trim());
                         }else
                         {
                             stock = 0;
