@@ -53,7 +53,7 @@
             this.cbProducto.Location = new System.Drawing.Point(334, 114);
             this.cbProducto.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.cbProducto.Name = "cbProducto";
-            this.cbProducto.Size = new System.Drawing.Size(244, 31);
+            this.cbProducto.Size = new System.Drawing.Size(391, 31);
             this.cbProducto.TabIndex = 59;
             // 
             // label3
@@ -61,7 +61,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(331, 93);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(138, 19);
+            this.label3.Size = new System.Drawing.Size(126, 18);
             this.label3.TabIndex = 58;
             this.label3.Text = "Seleccione Producto";
             // 
@@ -125,7 +125,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(38, 121);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 19);
+            this.label2.Size = new System.Drawing.Size(65, 18);
             this.label2.TabIndex = 53;
             this.label2.Text = "Fecha Fin";
             // 
@@ -134,7 +134,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(26, 69);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 19);
+            this.label1.Size = new System.Drawing.Size(78, 18);
             this.label1.TabIndex = 52;
             this.label1.Text = "Fecha Inicio";
             // 
@@ -145,7 +145,7 @@
             this.dtpFechaFin.Location = new System.Drawing.Point(114, 114);
             this.dtpFechaFin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dtpFechaFin.Name = "dtpFechaFin";
-            this.dtpFechaFin.Size = new System.Drawing.Size(198, 27);
+            this.dtpFechaFin.Size = new System.Drawing.Size(198, 26);
             this.dtpFechaFin.TabIndex = 51;
             // 
             // dtpFechaInicio
@@ -155,7 +155,7 @@
             this.dtpFechaInicio.Location = new System.Drawing.Point(114, 69);
             this.dtpFechaInicio.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dtpFechaInicio.Name = "dtpFechaInicio";
-            this.dtpFechaInicio.Size = new System.Drawing.Size(198, 27);
+            this.dtpFechaInicio.Size = new System.Drawing.Size(198, 26);
             this.dtpFechaInicio.TabIndex = 50;
             // 
             // dataListado

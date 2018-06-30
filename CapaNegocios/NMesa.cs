@@ -65,6 +65,12 @@ namespace CapaNegocios
             return Obj.MostrarIdVentaMesa(idMesa);
         }
 
+        public static DataTable mostrarMesasLLenas()
+        {
+
+            return new DMesa().MostrarMesasLLenas();
+        }
+
         public static string EditarEstadoMesa(int idMesa, string estado)
         {
             DMesa Obj = new DMesa();

@@ -40,6 +40,7 @@
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblComprobante = new System.Windows.Forms.Label();
             this.cbOrigen = new System.Windows.Forms.CheckBox();
+            this.lblVuelto = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -160,11 +161,21 @@
             this.cbOrigen.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbOrigen.Location = new System.Drawing.Point(86, 34);
             this.cbOrigen.Name = "cbOrigen";
-            this.cbOrigen.Size = new System.Drawing.Size(110, 24);
+            this.cbOrigen.Size = new System.Drawing.Size(107, 24);
             this.cbOrigen.TabIndex = 11;
             this.cbOrigen.Text = "Origen Caja";
             this.cbOrigen.UseVisualStyleBackColor = true;
             this.cbOrigen.CheckedChanged += new System.EventHandler(this.cbOrigen_CheckedChanged);
+            // 
+            // lblVuelto
+            // 
+            this.lblVuelto.AutoSize = true;
+            this.lblVuelto.Location = new System.Drawing.Point(334, 25);
+            this.lblVuelto.Name = "lblVuelto";
+            this.lblVuelto.Size = new System.Drawing.Size(17, 20);
+            this.lblVuelto.TabIndex = 12;
+            this.lblVuelto.Text = "0";
+            this.lblVuelto.Visible = false;
             // 
             // frmAnularComprobante
             // 
@@ -172,6 +183,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(449, 272);
+            this.Controls.Add(this.lblVuelto);
             this.Controls.Add(this.cbOrigen);
             this.Controls.Add(this.lblComprobante);
             this.Controls.Add(this.lblFecha);
@@ -210,5 +222,6 @@
         public System.Windows.Forms.Label lblFecha;
         public System.Windows.Forms.Label lblComprobante;
         private System.Windows.Forms.CheckBox cbOrigen;
+        public System.Windows.Forms.Label lblVuelto;
     }
 }

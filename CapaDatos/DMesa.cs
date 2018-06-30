@@ -419,5 +419,29 @@ namespace CapaDatos
             }
             return rpta;
         }
+
+        public DataTable MostrarMesasLLenas()
+        {
+            DataTable dtResultado = new DataTable("Mesa");
+            SqlConnection sqlCon = new SqlConnection();
+
+            try
+            {
+                sqlCon.ConnectionString = Conexion.cn;
+                SqlCommand sqlCmd = new SqlCommand();
+                sqlCmd.Connection = sqlCon;
+                sqlCmd.CommandText = "sp_mostrarMesasLlenas";
+                sqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlDataAdapter sqlDat = new SqlDataAdapter(sqlCmd);
+                sqlDat.Fill(dtResultado);
+            }
+            catch (Exception ex)
+            {
+                dtResultado = null;
+            }
+
+            return dtResultado;
+        }
     }
 }

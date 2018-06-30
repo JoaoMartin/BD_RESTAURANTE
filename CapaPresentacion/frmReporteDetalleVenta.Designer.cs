@@ -52,7 +52,7 @@
             this.dataListado.ReadOnly = true;
             this.dataListado.RowTemplate.Height = 24;
             this.dataListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataListado.Size = new System.Drawing.Size(1026, 339);
+            this.dataListado.Size = new System.Drawing.Size(946, 339);
             this.dataListado.TabIndex = 9;
             // 
             // lblTotal
@@ -60,7 +60,7 @@
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblTotal.Location = new System.Drawing.Point(843, 9);
+            this.lblTotal.Location = new System.Drawing.Point(793, 9);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(50, 20);
             this.lblTotal.TabIndex = 34;
@@ -71,7 +71,7 @@
             this.lblIdVenta.AutoSize = true;
             this.lblIdVenta.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIdVenta.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblIdVenta.Location = new System.Drawing.Point(724, 9);
+            this.lblIdVenta.Location = new System.Drawing.Point(628, 9);
             this.lblIdVenta.Name = "lblIdVenta";
             this.lblIdVenta.Size = new System.Drawing.Size(50, 20);
             this.lblIdVenta.TabIndex = 35;
@@ -82,7 +82,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(878, 384);
+            this.label1.Location = new System.Drawing.Point(720, 378);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 20);
             this.label1.TabIndex = 36;
@@ -92,9 +92,9 @@
             // 
             this.lblTot.AutoSize = true;
             this.lblTot.Font = new System.Drawing.Font("Roboto", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTot.Location = new System.Drawing.Point(948, 381);
+            this.lblTot.Location = new System.Drawing.Point(838, 374);
             this.lblTot.Name = "lblTot";
-            this.lblTot.Size = new System.Drawing.Size(62, 25);
+            this.lblTot.Size = new System.Drawing.Size(55, 24);
             this.lblTot.TabIndex = 37;
             this.lblTot.Text = "00.00";
             // 
@@ -113,7 +113,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1043, 415);
+            this.ClientSize = new System.Drawing.Size(962, 415);
             this.Controls.Add(this.lblTipo);
             this.Controls.Add(this.lblTot);
             this.Controls.Add(this.label1);
@@ -135,12 +135,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataListado;
         private System.Windows.Forms.Label lblTotal;
         public System.Windows.Forms.Label lblIdVenta;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.Label lblTot;
         public System.Windows.Forms.Label lblTipo;
+        public System.Windows.Forms.DataGridView dataListado;
     }
 }

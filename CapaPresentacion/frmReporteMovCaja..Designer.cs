@@ -52,9 +52,9 @@
             // lblBandera
             // 
             this.lblBandera.AutoSize = true;
-            this.lblBandera.Location = new System.Drawing.Point(676, 57);
+            this.lblBandera.Location = new System.Drawing.Point(708, 346);
             this.lblBandera.Name = "lblBandera";
-            this.lblBandera.Size = new System.Drawing.Size(16, 17);
+            this.lblBandera.Size = new System.Drawing.Size(15, 16);
             this.lblBandera.TabIndex = 75;
             this.lblBandera.Text = "0";
             this.lblBandera.Visible = false;
@@ -65,7 +65,7 @@
             this.rbElegir.Font = new System.Drawing.Font("Roboto", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbElegir.Location = new System.Drawing.Point(32, 129);
             this.rbElegir.Name = "rbElegir";
-            this.rbElegir.Size = new System.Drawing.Size(107, 23);
+            this.rbElegir.Size = new System.Drawing.Size(97, 22);
             this.rbElegir.TabIndex = 74;
             this.rbElegir.Text = "Elegir Fecha";
             this.rbElegir.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -79,7 +79,7 @@
             this.rbAperturaCaja.Font = new System.Drawing.Font("Roboto", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbAperturaCaja.Location = new System.Drawing.Point(32, 100);
             this.rbAperturaCaja.Name = "rbAperturaCaja";
-            this.rbAperturaCaja.Size = new System.Drawing.Size(117, 23);
+            this.rbAperturaCaja.Size = new System.Drawing.Size(105, 22);
             this.rbAperturaCaja.TabIndex = 73;
             this.rbAperturaCaja.TabStop = true;
             this.rbAperturaCaja.Text = "Apertura Caja";
@@ -92,7 +92,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(28, 78);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(83, 17);
+            this.label5.Size = new System.Drawing.Size(80, 16);
             this.label5.TabIndex = 65;
             this.label5.Text = "Fecha Inicio";
             // 
@@ -114,7 +114,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 17);
+            this.label1.Size = new System.Drawing.Size(80, 16);
             this.label1.TabIndex = 52;
             this.label1.Text = "Fecha Inicio";
             // 
@@ -125,7 +125,7 @@
             this.dtpFechaInicio.Location = new System.Drawing.Point(94, 21);
             this.dtpFechaInicio.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dtpFechaInicio.Name = "dtpFechaInicio";
-            this.dtpFechaInicio.Size = new System.Drawing.Size(198, 27);
+            this.dtpFechaInicio.Size = new System.Drawing.Size(198, 26);
             this.dtpFechaInicio.TabIndex = 50;
             // 
             // dtpFechaFin
@@ -135,7 +135,7 @@
             this.dtpFechaFin.Location = new System.Drawing.Point(94, 66);
             this.dtpFechaFin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dtpFechaFin.Name = "dtpFechaFin";
-            this.dtpFechaFin.Size = new System.Drawing.Size(198, 27);
+            this.dtpFechaFin.Size = new System.Drawing.Size(198, 26);
             this.dtpFechaFin.TabIndex = 51;
             // 
             // label2
@@ -143,7 +143,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(18, 72);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 17);
+            this.label2.Size = new System.Drawing.Size(67, 16);
             this.label2.TabIndex = 53;
             this.label2.Text = "Fecha Fin";
             // 
@@ -247,7 +247,6 @@
             this.ClientSize = new System.Drawing.Size(993, 680);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.lblTotal1);
-            this.Controls.Add(this.lblBandera);
             this.Controls.Add(this.rbElegir);
             this.Controls.Add(this.rbAperturaCaja);
             this.Controls.Add(this.label5);
@@ -257,11 +256,13 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.dataListado);
+            this.Controls.Add(this.lblBandera);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmReporteMovCaja";
             this.Text = ".:: REPORTE DE MOV CAJA ::.";
+            this.Load += new System.EventHandler(this.frmReporteMovCaja_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).EndInit();

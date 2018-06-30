@@ -22,7 +22,7 @@ namespace CapaPresentacion
 
         public void ingresosEfectivo()
         {
-          
+
 
             //cuenta_usuario.idCliente(txtUsuario.Text, txtContraseña.Text);
             // dt.Rows[0]["Estado"].ToString();
@@ -30,7 +30,7 @@ namespace CapaPresentacion
 
         public void ingresosTarjeta()
         {
-            
+
         }
 
 
@@ -46,15 +46,21 @@ namespace CapaPresentacion
             decimal totalVenta = 00.00m;
             decimal montoApertura = 00.00m;
             decimal montoDeposito = 00.00m;
+            decimal ventasCorteria = 00.00m;
+            decimal ventasCreditos = 00.00m;
+            decimal ventasCosumoTrabajador = 00.00m;
 
             ventasEfectivo = Convert.ToDecimal(txtVentaEfectivo.Text);
             ventasTarjeta = Convert.ToDecimal(txtTarjeta.Text);
+            ventasCorteria = Convert.ToDecimal(txtCortesia.Text);
+            ventasCreditos = Convert.ToDecimal(txtCredito.Text);
+            ventasCosumoTrabajador = Convert.ToDecimal(txtConsumoTrab.Text);
             otrosIngreso = Convert.ToDecimal(txtOtrosIngresos.Text);
             egresos = Convert.ToDecimal(txtEgresos.Text);
             totalParcial = ventasEfectivo + otrosIngreso - egresos;
             montoApertura = Convert.ToDecimal(lblMontoInicial.Text);
             totalCaja = totalParcial + montoApertura;
-            totalVenta = ventasEfectivo + ventasTarjeta;
+            totalVenta = ventasEfectivo + ventasTarjeta + ventasCreditos + ventasCorteria + ventasCosumoTrabajador;
 
             montoDejado = Convert.ToDecimal(txtMontoDejado.Text);
             montoDeposito = totalCaja - montoDejado;
@@ -226,184 +232,196 @@ namespace CapaPresentacion
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            string rpta = "";
-            decimal montoDejado = 00.00m, montoDeposito = 00.00m, montoConteo = 00.00m, ventaCredito = 00.00m, ventaCortesia = 00.00m, ventaConsumoTr = 00.00m;
-            if (txtMontoDejado.Text.Trim().Length == 0)
+            DataTable dtMesas = NMesa.mostrarMesasLLenas();
+            if (dtMesas.Rows.Count > 0)
             {
-                montoDejado = 00.00m;
+                MessageBox.Show("No se puede cerrar la caja porque hay mesas ocupadas");
             }
             else
             {
-                montoDejado = Convert.ToDecimal(txtMontoDejado.Text.Trim());
-            }
-            if (txtMontoDeposito.Text.Trim().Length == 0)
-            {
-                montoDeposito = 00.00m;
-            }
-            else
-            {
-                montoDeposito = Convert.ToDecimal(txtMontoDeposito.Text.Trim());
-            }
-            if (txtMontoConteo.Text.Trim().Length == 0)
-            {
-                montoConteo = 00.00m;
-            }
-            else
-            {
-                montoConteo = Convert.ToDecimal(txtMontoConteo.Text.Trim());
-            }
-
-            if (txtCredito.Text.Trim().Length == 0)
-            {
-                ventaCredito = 00.00m;
-            }
-            else
-            {
-                ventaCredito = Convert.ToDecimal(txtCredito.Text.Trim());
-            }
-
-            if (txtCortesia.Text.Trim().Length == 0)
-            {
-                ventaCortesia = 00.00m;
-            }
-            else
-            {
-                ventaCortesia = Convert.ToDecimal(txtCortesia.Text.Trim());
-            }
-
-            if (txtConsumoTrab.Text.Trim().Length == 0)
-            {
-                ventaConsumoTr = 00.00m;
-            }
-            else
-            {
-                ventaConsumoTr = Convert.ToDecimal(txtConsumoTrab.Text.Trim());
-            }
-
-
-
-            DateTime fechaApertura = Convert.ToDateTime(this.lblfechaApert.Text);
-           rpta= NCaja_A.Insertar(Convert.ToInt32(this.lblidUsuario.Text),"Caja 1", DateTime.Now,Convert.ToDecimal(lblTotalCaja.Text), "Cerrada", 1,Convert.ToDecimal(txtTarjeta.Text),
-               Convert.ToDecimal(this.txtEgresos.Text),Convert.ToDecimal(txtOtrosIngresos.Text),Convert.ToDecimal(txtVentaEfectivo.Text),Convert.ToDecimal(lblMontoInicial.Text),
-               fechaApertura,montoDejado,montoDeposito,montoConteo,ventaCredito,ventaCortesia,ventaConsumoTr);
-            if (rpta != "OK")
-            {
-                int diezCen, veinteCen, cincuentaCen, unSol, dosSoles, cincoSoles, diezSoles, veinteSoles, cincuentaSoles, cienSoles, doscientosSoles;
-                if (txtDiezCentimos.Text.Trim() == string.Empty)
+                string rpta = "";
+                decimal montoDejado = 00.00m, montoDeposito = 00.00m, montoConteo = 00.00m, ventaCredito = 00.00m, ventaCortesia = 00.00m, ventaConsumoTr = 00.00m;
+                if (txtMontoDejado.Text.Trim().Length == 0)
                 {
-                    diezCen = 0;
-                }else
-                {
-                    diezCen = Convert.ToInt32(txtDiezCentimos.Text.Trim());
-                }
-
-                if (txtVeinteCentimos.Text.Trim() == string.Empty)
-                {
-                    veinteCen = 0;
+                    montoDejado = 00.00m;
                 }
                 else
                 {
-                    veinteCen = Convert.ToInt32(txtVeinteCentimos.Text.Trim());
+                    montoDejado = Convert.ToDecimal(txtMontoDejado.Text.Trim());
                 }
-
-                if (txtCincuentaCentimos.Text.Trim() == string.Empty)
+                if (txtMontoDeposito.Text.Trim().Length == 0)
                 {
-                    cincuentaCen = 0;
-                }
-                else
-                {
-                    cincuentaCen = Convert.ToInt32(txtCincuentaCentimos.Text.Trim());
-                }
-
-                if (txtUnSol.Text.Trim() == string.Empty)
-                {
-                    unSol = 0;
+                    montoDeposito = 00.00m;
                 }
                 else
                 {
-                    unSol = Convert.ToInt32(txtUnSol.Text.Trim());
+                    montoDeposito = Convert.ToDecimal(txtMontoDeposito.Text.Trim());
                 }
-
-                if (txtDosSoles.Text.Trim() == string.Empty)
+                if (txtMontoConteo.Text.Trim().Length == 0)
                 {
-                    dosSoles = 0;
-                }
-                else
-                {
-                    dosSoles = Convert.ToInt32(txtDosSoles.Text.Trim());
-                }
-
-                if (txtCincoSoles.Text.Trim() == string.Empty)
-                {
-                    cincoSoles = 0;
+                    montoConteo = 00.00m;
                 }
                 else
                 {
-                    cincoSoles = Convert.ToInt32(txtCincoSoles.Text.Trim());
+                    montoConteo = Convert.ToDecimal(txtMontoConteo.Text.Trim());
                 }
 
-                if (txtDiezSoles.Text.Trim() == string.Empty)
+                if (txtCredito.Text.Trim().Length == 0)
                 {
-                    diezSoles = 0;
+                    ventaCredito = 00.00m;
                 }
                 else
                 {
-                    diezSoles = Convert.ToInt32(txtDiezSoles.Text.Trim());
+                    ventaCredito = Convert.ToDecimal(txtCredito.Text.Trim());
                 }
 
-                if (txtVeinteSoles.Text.Trim() == string.Empty)
+                if (txtCortesia.Text.Trim().Length == 0)
                 {
-                    veinteSoles = 0;
+                    ventaCortesia = 00.00m;
                 }
                 else
                 {
-                    veinteSoles = Convert.ToInt32(txtVeinteSoles.Text.Trim());
+                    ventaCortesia = Convert.ToDecimal(txtCortesia.Text.Trim());
                 }
 
-                if (txtCincuentaSoles.Text.Trim() == string.Empty)
+                if (txtConsumoTrab.Text.Trim().Length == 0)
                 {
-                    cincuentaSoles = 0;
+                    ventaConsumoTr = 00.00m;
                 }
                 else
                 {
-                    cincuentaSoles = Convert.ToInt32(txtCincuentaSoles.Text.Trim());
+                    ventaConsumoTr = Convert.ToDecimal(txtConsumoTrab.Text.Trim());
                 }
 
-                if (txtCienSoles.Text.Trim() == string.Empty)
+
+
+                DateTime fechaApertura = Convert.ToDateTime(this.lblfechaApert.Text);
+                rpta = NCaja_A.Insertar(Convert.ToInt32(this.lblidUsuario.Text), "Caja 1", DateTime.Now, Convert.ToDecimal(lblTotalCaja.Text), "Cerrada", 1, Convert.ToDecimal(txtTarjeta.Text),
+                    Convert.ToDecimal(this.txtEgresos.Text), Convert.ToDecimal(txtOtrosIngresos.Text), Convert.ToDecimal(txtVentaEfectivo.Text), Convert.ToDecimal(lblMontoInicial.Text),
+                    fechaApertura, montoDejado, montoDeposito, montoConteo, ventaCredito, ventaCortesia, ventaConsumoTr);
+                if (rpta != "OK")
                 {
-                    cienSoles = 0;
+                    int diezCen, veinteCen, cincuentaCen, unSol, dosSoles, cincoSoles, diezSoles, veinteSoles, cincuentaSoles, cienSoles, doscientosSoles;
+                    if (txtDiezCentimos.Text.Trim() == string.Empty)
+                    {
+                        diezCen = 0;
+                    }
+                    else
+                    {
+                        diezCen = Convert.ToInt32(txtDiezCentimos.Text.Trim());
+                    }
+
+                    if (txtVeinteCentimos.Text.Trim() == string.Empty)
+                    {
+                        veinteCen = 0;
+                    }
+                    else
+                    {
+                        veinteCen = Convert.ToInt32(txtVeinteCentimos.Text.Trim());
+                    }
+
+                    if (txtCincuentaCentimos.Text.Trim() == string.Empty)
+                    {
+                        cincuentaCen = 0;
+                    }
+                    else
+                    {
+                        cincuentaCen = Convert.ToInt32(txtCincuentaCentimos.Text.Trim());
+                    }
+
+                    if (txtUnSol.Text.Trim() == string.Empty)
+                    {
+                        unSol = 0;
+                    }
+                    else
+                    {
+                        unSol = Convert.ToInt32(txtUnSol.Text.Trim());
+                    }
+
+                    if (txtDosSoles.Text.Trim() == string.Empty)
+                    {
+                        dosSoles = 0;
+                    }
+                    else
+                    {
+                        dosSoles = Convert.ToInt32(txtDosSoles.Text.Trim());
+                    }
+
+                    if (txtCincoSoles.Text.Trim() == string.Empty)
+                    {
+                        cincoSoles = 0;
+                    }
+                    else
+                    {
+                        cincoSoles = Convert.ToInt32(txtCincoSoles.Text.Trim());
+                    }
+
+                    if (txtDiezSoles.Text.Trim() == string.Empty)
+                    {
+                        diezSoles = 0;
+                    }
+                    else
+                    {
+                        diezSoles = Convert.ToInt32(txtDiezSoles.Text.Trim());
+                    }
+
+                    if (txtVeinteSoles.Text.Trim() == string.Empty)
+                    {
+                        veinteSoles = 0;
+                    }
+                    else
+                    {
+                        veinteSoles = Convert.ToInt32(txtVeinteSoles.Text.Trim());
+                    }
+
+                    if (txtCincuentaSoles.Text.Trim() == string.Empty)
+                    {
+                        cincuentaSoles = 0;
+                    }
+                    else
+                    {
+                        cincuentaSoles = Convert.ToInt32(txtCincuentaSoles.Text.Trim());
+                    }
+
+                    if (txtCienSoles.Text.Trim() == string.Empty)
+                    {
+                        cienSoles = 0;
+                    }
+                    else
+                    {
+                        cienSoles = Convert.ToInt32(txtCienSoles.Text.Trim());
+                    }
+
+                    if (txtDoscientoSoles.Text.Trim() == string.Empty)
+                    {
+                        doscientosSoles = 0;
+                    }
+                    else
+                    {
+                        doscientosSoles = Convert.ToInt32(txtDoscientoSoles.Text.Trim());
+                    }
+
+                    string rpta1 = NDetalleCaja.Insertar(Convert.ToInt32(rpta), diezCen, veinteCen, cincuentaCen, unSol, dosSoles, cincoSoles, diezSoles, veinteSoles, cincuentaSoles, cienSoles, doscientosSoles);
+                    if (rpta1 == "OK")
+                    {
+                        MessageBox.Show("Se cerró la caja");
+                        NImprimirCierreTurno.imprimirCaja(this.lblTrabajador.Text, lblfechaApert.Text, DateTime.Now, lblMontoInicial.Text, txtVentaEfectivo.Text, txtOtrosIngresos.Text, txtEgresos.Text,
+                            lblTotalCaja.Text, lblToVentas.Text, txtTarjeta.Text, txtTickets.Text, txtBoletas.Text, txtFacturas.Text, lblTotalParcial.Text, txtCredito.Text, txtCortesia.Text,
+                            txtConsumoTrab.Text);
+                        Application.Exit();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show(rpta1);
+                    }
+
                 }
                 else
                 {
-                    cienSoles = Convert.ToInt32(txtCienSoles.Text.Trim());
+                    MessageBox.Show(rpta);
                 }
 
-                if (txtDoscientoSoles.Text.Trim() == string.Empty)
-                {
-                    doscientosSoles = 0;
-                }
-                else
-                {
-                    doscientosSoles = Convert.ToInt32(txtDoscientoSoles.Text.Trim());
-                }
-
-                string rpta1=NDetalleCaja.Insertar(Convert.ToInt32(rpta), diezCen, veinteCen,cincuentaCen, unSol, dosSoles,cincoSoles,diezSoles, veinteSoles,cincuentaSoles, cienSoles, doscientosSoles);
-                if(rpta1 == "OK")
-                {
-                    MessageBox.Show("Se cerró la caja");
-                    NImprimirCierreTurno.imprimirCaja(this.lblTrabajador.Text, lblfechaApert.Text, DateTime.Now,lblMontoInicial.Text,txtVentaEfectivo.Text,txtOtrosIngresos.Text,txtEgresos.Text,
-                        lblTotalCaja.Text,lblToVentas.Text,txtTarjeta.Text,txtTickets.Text,txtBoletas.Text,txtFacturas.Text,lblTotalParcial.Text,txtCredito.Text,txtCortesia.Text,
-                        txtConsumoTrab.Text);
-                    Application.Exit();
-                   
-                }else
-                {
-                    MessageBox.Show(rpta1);
-                }
-             
-            }else
-            {
-                MessageBox.Show(rpta);
             }
         }
 
@@ -474,7 +492,7 @@ namespace CapaPresentacion
             }
 
 
-            totalBilletes = diezSoles + veinteSoles + cincuentaSoles + cienSoles + doscientosSoles ;
+            totalBilletes = diezSoles + veinteSoles + cincuentaSoles + cienSoles + doscientosSoles;
             totalMoneda = Convert.ToDecimal(this.lblTotalMonedas.Text);
             totalArqueo = totalBilletes + totalMoneda;
             this.lblTotalArqueo.Text = totalArqueo.ToString();
@@ -485,16 +503,17 @@ namespace CapaPresentacion
         private void mostrarTotalMonedas()
         {
             decimal totalMoneda = 00.00m, totalArqueo = 00.00m, totalBilletes = 00.00m;
-            decimal diezCen,veinteCen,cincuentaCen,unSol,dosSoles,cincoSoles;
-            if(txtDiezCentimos.Text.Trim() == string.Empty)
+            decimal diezCen, veinteCen, cincuentaCen, unSol, dosSoles, cincoSoles;
+            if (txtDiezCentimos.Text.Trim() == string.Empty)
             {
                 diezCen = 00.00m;
                 lblImpDiezC.Text = "00.00";
-            }else
+            }
+            else
             {
                 diezCen = 0.10m * Convert.ToDecimal(this.txtDiezCentimos.Text.Trim());
                 lblImpDiezC.Text = (0.10m * Convert.ToDecimal(this.txtDiezCentimos.Text.Trim())).ToString();
-                
+
             }
 
             if (txtVeinteCentimos.Text.Trim() == string.Empty)
@@ -716,7 +735,7 @@ namespace CapaPresentacion
 
         private void frmCierreCaja_FormClosed(object sender, FormClosedEventArgs e)
         {
-         
+
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -75,7 +75,7 @@
             // 
             this.rbElegir.AutoSize = true;
             this.rbElegir.Font = new System.Drawing.Font("Roboto", 9.230769F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbElegir.Location = new System.Drawing.Point(44, 160);
+            this.rbElegir.Location = new System.Drawing.Point(45, 151);
             this.rbElegir.Name = "rbElegir";
             this.rbElegir.Size = new System.Drawing.Size(110, 24);
             this.rbElegir.TabIndex = 91;
@@ -89,7 +89,7 @@
             this.rbAperturaCaja.AutoSize = true;
             this.rbAperturaCaja.Checked = true;
             this.rbAperturaCaja.Font = new System.Drawing.Font("Roboto", 9.230769F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbAperturaCaja.Location = new System.Drawing.Point(44, 131);
+            this.rbAperturaCaja.Location = new System.Drawing.Point(45, 122);
             this.rbAperturaCaja.Name = "rbAperturaCaja";
             this.rbAperturaCaja.Size = new System.Drawing.Size(118, 24);
             this.rbAperturaCaja.TabIndex = 90;
@@ -212,7 +212,7 @@
             // lblBandera
             // 
             this.lblBandera.AutoSize = true;
-            this.lblBandera.Location = new System.Drawing.Point(805, 44);
+            this.lblBandera.Location = new System.Drawing.Point(398, 305);
             this.lblBandera.Name = "lblBandera";
             this.lblBandera.Size = new System.Drawing.Size(17, 20);
             this.lblBandera.TabIndex = 95;
@@ -224,7 +224,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(971, 619);
-            this.Controls.Add(this.lblBandera);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnImprimir);
@@ -234,6 +233,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataListado);
+            this.Controls.Add(this.lblBandera);
             this.Font = new System.Drawing.Font("Roboto", 9.230769F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

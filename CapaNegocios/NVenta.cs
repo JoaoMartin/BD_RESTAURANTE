@@ -202,6 +202,12 @@ namespace CapaNegocios
             return Obj.MostrarDetalleVenta(idVenta);
         }
 
+        public static DataTable mostrarDetalleVentaAnulada(int idVenta)
+        {
+            DVenta Obj = new DVenta();
+            return Obj.MostrarDetalleVentaAnulada(idVenta);
+        }
+
         public static DataTable mostrarDetallePedido(int idVenta)
         {
             DVenta Obj = new DVenta();

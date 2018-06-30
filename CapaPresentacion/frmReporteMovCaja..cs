@@ -129,5 +129,11 @@ namespace CapaPresentacion
                 this.lblBandera.Text = "1";
             }
         }
+
+        private void frmReporteMovCaja_Load(object sender, EventArgs e)
+        {
+            this.Left = 0;
+            this.Top = 0;
+        }
     }
 }

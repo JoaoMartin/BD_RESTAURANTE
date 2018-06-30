@@ -20,13 +20,16 @@ namespace CapaPresentacion
 
         private void Formato()
         {
+            this.dataListado.Columns[0].Visible = false;
+            this.dataListado.Columns[6].Visible = false;
+            this.dataListado.Columns[7].Visible = false;
             // DataGridView1.Columns(1).Width = 150
-            this.dataListado.Columns[0].Width = 80;
+           // this.dataListado.Columns[0].Width = 80;
             this.dataListado.Columns[1].Width = 350;
             this.dataListado.Columns[2].Width = 100;
             this.dataListado.Columns[3].Width = 170;
             this.dataListado.Columns[4].Width = 170;
-            this.dataListado.Columns[4].Width = 170;
+           // this.dataListado.Columns[4].Width = 170;
 
             this.dataListado.RowTemplate.Height = 47;
             this.dataListado.ClearSelection();
@@ -65,6 +68,7 @@ namespace CapaPresentacion
         private void frmReporteDetalleVenta_Load(object sender, EventArgs e)
         {
             Mostrar();
+            dataListado.ClearSelection();
         }
     }
 }

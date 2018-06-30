@@ -1385,6 +1385,7 @@ namespace CapaPresentacion
             frmVistaClientePagoVenta form = new frmVistaClientePagoVenta();
             form.lblBandera.Text = "1";
             form.ShowDialog();
+            this.txtEfectivo.Focus();
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -1580,7 +1581,16 @@ namespace CapaPresentacion
 
         private void txtEfectivo_KeyUp(object sender, KeyEventArgs e)
         {
-            mostrarTotales();
+            decimal total = 00.00m;
+            if(txtTotalPagado.Text.Trim().Length > 0)
+            {
+                total = Convert.ToDecimal(txtTotalPagado.Text);
+                if (total > 00.00m)
+                {
+                    mostrarTotales();
+                }
+            }
+  
         }
         private void Pedir()
         {

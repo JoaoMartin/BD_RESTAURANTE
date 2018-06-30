@@ -16,16 +16,16 @@ namespace CapaPresentacion
         public string idMesa, nroMesa, idSalon, nombreSalon, idMesero, nombreMesero;
 
         Button[] btnCategoria, btnProducto;
-        DataTable dtCategoria, dtProducto, dtProdCom;
-        public DataTable dtDetalle, dtDetalleVenta, dtDetalleMenu;
+        DataTable dtCategoria, dtProducto;
+        public DataTable dtDetalle, dtDetalleVenta, dtDetalleMenu, dtDetalle1;
         public DataTable dtDetallePedido;
         private bool isNuevo = true;
-        public DataRow row;
+        public DataRow row, row1;
         int nroCategoria, cantFilas;
         private int loc = 0;
         private int locProducto = 0;
         public decimal totalPagado = 0, subTotal = 0;
-        int cantidadAcumulada = 0;
+        int banderaRows = 0;
         public static frmVenta f1;
 
         private void MensajeOK(string mensaje)
@@ -331,7 +331,7 @@ namespace CapaPresentacion
         {
             try
             {
-                if (this.lblIdVenta.Text != "0")
+                if (this.lblIdVenta.Text != "0" && lblidDetalle.Text != "")
                 {
                     this.btnReservar.Enabled = false;
                     if (this.dataListadoDetalle.Rows.Count <= 0)
@@ -589,16 +589,6 @@ namespace CapaPresentacion
                                 this.lblBanderaStock.Text = "2";
                                 int indiceFila = this.dataListadoDetalle.CurrentRow.Index;
                                 DataRow row = this.dtDetalleVenta.Rows[indiceFila];
-
-                                /* this.totalPagado = this.totalPagado - Convert.ToDecimal(row["Importe"].ToString());
-                                 this.txtSubTotal.Text = totalPagado.ToString("#0.00#");
-                                 this.txtTotalPagado.Text = totalPagado.ToString("#0.00#");
-                                 this.txtDescuento.Text = (descuentoTotal - Convert.ToDecimal(row["Descuento"].ToString())).ToString();
-         */
-
-
-                                string tipo1 = dataListadoDetalle.Rows[indiceFila].Cells["Tipo"].Value.ToString();
-                                string bandMen = dataListadoDetalle.Rows[indiceFila].Cells["Barra"].Value.ToString();
                                 this.dtDetalleVenta.Rows.Remove(row);
                                 this.dataListadoDetalle.ClearSelection();
                                 this.lblBandera.Text = "0";
@@ -627,42 +617,7 @@ namespace CapaPresentacion
                                 {
                                     this.btnSeparar.Enabled = true;
                                 }
-                                actStockTem();
-                                if (dataListadoDetalle.Rows.Count == 0)
-                                {
-                                    this.dtStock.Rows.Clear();
-                                }
-                                cantidadAcumulada = 0;
 
-                                if (tipo1 == "MDSSD" || tipo1 == "DSDSD")
-                                {
-                                    int contador = 0;
-
-                                    for (int y = 0; y < dgvBanderaMenu.Rows.Count; y++)
-                                    {
-                                        if (bandMen == dgvBanderaMenu.Rows[y].Cells[1].Value.ToString())
-                                        {
-                                            dgvBanderaMenu.Rows.RemoveAt(y);
-                                            y = -1;
-                                        }
-                                    }
-
-                                    for (int y = 0; y < dtDetalleMenu.Rows.Count; y++)
-                                    {
-                                        if (bandMen == dtDetalleMenu.Rows[y][2].ToString())
-                                        {
-                                            dtDetalleMenu.Rows.RemoveAt(y);
-                                            y = -1;
-                                        }
-                                    }
-
-                                    /* while(bandMen == dgvBanderaMenu.Rows[contador].Cells[1].Value.ToString())
-                                     {
-                                         dgvBanderaMenu.Rows.RemoveAt(contador);
-                                         contador++;
-                                     }*/
-                                    this.dataListadoDetalle.Select();
-                                }
                             }
                             else
                             {
@@ -678,7 +633,64 @@ namespace CapaPresentacion
                         this.dataListadoDetalle.Select();
                     }
                 }
-                else
+                else if (lblIdVenta.Text != "0" && (lblidDetalle.Text == "" || lblidDetalle.Text == "0"))
+                {
+                    if (this.dataListadoDetalle.SelectedRows.Count > 0)
+                    {
+                        decimal descuentoTotal = Convert.ToDecimal(this.txtDescuento.Text);
+                        this.lblBanderaStock.Text = "2";
+                        int indiceFila = this.dataListadoDetalle.CurrentRow.Index;
+                        //DataRow row = this.dtDetalle.Rows[indiceFila];
+
+                        /* this.totalPagado = this.totalPagado - Convert.ToDecimal(row["Importe"].ToString());
+                         this.txtSubTotal.Text = totalPagado.ToString("#0.00#");
+                         this.txtTotalPagado.Text = totalPagado.ToString("#0.00#");
+                         this.txtDescuento.Text = (descuentoTotal - Convert.ToDecimal(row["Descuento"].ToString())).ToString();
+ */
+
+
+                        dataListadoDetalle.Rows.RemoveAt(dataListadoDetalle.CurrentRow.Index);
+                        this.dataListadoDetalle.ClearSelection();
+                        this.lblBandera.Text = "0";
+                        decimal dctoTotProm = 0, subTotal20 = 0;
+                        int cantidad20 = 0;
+                        string tipo;
+                        for (int p = 0; p < dataListadoDetalle.Rows.Count; p++)
+                        {
+                            dctoTotProm = dctoTotProm + Convert.ToDecimal(dataListadoDetalle.Rows[p].Cells["Descuento"].Value.ToString());
+                            cantidad20 = Convert.ToInt32(dataListadoDetalle.Rows[p].Cells["Cant"].Value.ToString());
+                            subTotal20 = subTotal20 + (cantidad20 * Convert.ToDecimal(dataListadoDetalle.Rows[p].Cells["Precio_Un"].Value.ToString()));
+                        }
+                        this.txtDescuento.Text = dctoTotProm.ToString();
+                        descuentoTotal = Convert.ToDecimal(this.txtDescuento.Text);
+                        this.txtSubTotal.Text = subTotal20.ToString("#0.00#");
+                        this.txtTotalPagado.Text = (subTotal20 - descuentoTotal).ToString("#0.00#");
+                        if (dataListadoDetalle.Rows.Count <= 0)
+                        {
+                            HabilitarUno();
+                        }
+                        if (dataListadoDetalle.Rows.Count <= 1)
+                        {
+                            this.btnSeparar.Enabled = false;
+                        }
+                        else
+                        {
+                            this.btnSeparar.Enabled = true;
+                        }
+ 
+                        this.dataListadoDetalle.Select();
+                        if (dataListadoDetalle.Rows.Count > 0)
+                        {
+                            this.btnReservar.Enabled = true;
+                        }
+                        else
+                        {
+                            this.btnReservar.Enabled = false;
+                        }
+                    }
+                }
+
+                else if (lblIdVenta.Text == "0" || lblIdVenta.Text == "")
                 {
                     if (this.dataListadoDetalle.Rows.Count <= 0)
                     {
@@ -735,11 +747,11 @@ namespace CapaPresentacion
                         {
                             this.dtStock.Rows.Clear();
                         }
-                        cantidadAcumulada = 0;
+
 
                         if (tipo1 == "MJSDJK" || tipo1 == "DPDJFSKL")
                         {
-                            int contador = 0;
+
 
                             for (int y = 0; y < dgvBanderaMenu.Rows.Count; y++)
                             {
@@ -900,7 +912,7 @@ namespace CapaPresentacion
                                                     rpta = NProducto.EditarStock(idProducto_Com, cantRequerida * cantPedido);
 
                                                     DataTable dtRecetaC = NReceta.Mostrar(Convert.ToInt32(idProducto_Com));
-                                                    if(dtRecetaC.Rows.Count > 0)
+                                                    if (dtRecetaC.Rows.Count > 0)
                                                     {
                                                         int cantInsumo = Convert.ToInt32(dataListadoDetalle.Rows[i].Cells["Cant"].Value.ToString());
                                                         decimal cantTotal;
@@ -996,7 +1008,7 @@ namespace CapaPresentacion
                             //   Convert.ToDecimal(this.txtDescuento.Text), Convert.ToInt32(this.lblIdUsuario.Text), "", 1, dtDetalle);
                             rpta = NVenta.InsertarPedido(null, Convert.ToInt32(this.lblIdMesa.Text), DateTime.Now, "Pedido", "",
                                 Convert.ToDecimal(this.txtDescuento.Text), Convert.ToInt32(idMesero), "", 1, dtDetalle, dtDetalleMenu,
-                                DateTime.Now, 00.00m, Convert.ToInt32(this.idMesero), "", "", "", "","");
+                                DateTime.Now, 00.00m, Convert.ToInt32(this.idMesero), "", "", "", "", "");
                             if (rpta == "OK")
                             {
 
@@ -1544,7 +1556,7 @@ namespace CapaPresentacion
                 if (this.lblBanderaDatatable.Text == "0" && this.lblIdVenta.Text == "0")
                 {
                     rpta = NVenta.InsertarPedidoSeparado(null, Convert.ToInt32(this.lblIdMesa.Text), DateTime.Now, "Pedido CS", "", Convert.ToDecimal(this.txtDescuento.Text),
-                        Convert.ToInt32(idMesero), "CS", 1, dtDetalle, dtDetalleMenu, DateTime.Now, 00.00m, Convert.ToInt32(idMesero), "", "", "", "","");
+                        Convert.ToInt32(idMesero), "CS", 1, dtDetalle, dtDetalleMenu, DateTime.Now, 00.00m, Convert.ToInt32(idMesero), "", "", "", "", "");
 
                     this.lblIdVenta.Text = rpta;
                     this.lblBanderaDatatable.Text = "1";
@@ -1591,7 +1603,7 @@ namespace CapaPresentacion
                                 for (int k = 0; k < dtReceta.Rows.Count; k++)
                                 {
                                     cantTotal = cantInsumo * Convert.ToDecimal(dtReceta.Rows[k][3].ToString());
-                                  NInsumo.EditarStock(Convert.ToInt32(dtReceta.Rows[k][0].ToString()), cantTotal);
+                                    NInsumo.EditarStock(Convert.ToInt32(dtReceta.Rows[k][0].ToString()), cantTotal);
                                 }
 
                             }
@@ -1671,7 +1683,7 @@ namespace CapaPresentacion
                                         for (int k = 0; k < dtReceta.Rows.Count; k++)
                                         {
                                             cantTotal = cantInsumo * Convert.ToDecimal(dtReceta.Rows[k][3].ToString());
-                                           NInsumo.EditarStock(Convert.ToInt32(dtReceta.Rows[k][0].ToString()), cantTotal);
+                                            NInsumo.EditarStock(Convert.ToInt32(dtReceta.Rows[k][0].ToString()), cantTotal);
                                         }
 
                                     }
@@ -1781,9 +1793,9 @@ namespace CapaPresentacion
             form.lblIdUsuario.Text = idMesero;
             decimal subtotal1 = 00.00m;
             //subtotal1 = ((Convert.ToDecimal(this.txtSubTotal.Text) - Convert.ToDecimal(this.txtDescuento.Text)) / 1.18m);
-             subtotal1 = ((totalRed) / 1.18m);
+            subtotal1 = ((totalRed) / 1.18m);
             form.lblSubTotal.Text = string.Format(" {0:#,##0.00}", Convert.ToDouble(subtotal1));
-           // decimal igvC = (Convert.ToDecimal(this.txtTotalPagado.Text) - subtotal1);
+            // decimal igvC = (Convert.ToDecimal(this.txtTotalPagado.Text) - subtotal1);
             decimal igvC = (totalRed - subtotal1);
             form.lblIgv.Text = string.Format(" {0:#,##0.00}", Convert.ToDouble(igvC));
             form.lblBanderaCobro.Text = "0";
@@ -1846,6 +1858,26 @@ namespace CapaPresentacion
             this.dtDetalle.Columns.Add("Estado", System.Type.GetType("System.String"));
 
             this.dataListadoDetalle.DataSource = this.dtDetalle;
+        }
+
+        private void crearTabla1()
+        {
+
+            this.dtDetalle1 = new DataTable("Detalle");
+            this.dtDetalle1.Columns.Add("Cod", System.Type.GetType("System.Int32"));
+            this.dtDetalle1.Columns.Add("Descripcion", System.Type.GetType("System.String"));
+            this.dtDetalle1.Columns.Add("Cant", System.Type.GetType("System.Int32"));
+            this.dtDetalle1.Columns.Add("Precio_Un", System.Type.GetType("System.Decimal"));
+            this.dtDetalle1.Columns.Add("Descuento", System.Type.GetType("System.Decimal"));
+            this.dtDetalle1.Columns.Add("Importe", System.Type.GetType("System.Decimal"));
+            this.dtDetalle1.Columns.Add("Nota", System.Type.GetType("System.String"));
+            this.dtDetalle1.Columns.Add("idDetalleVenta", System.Type.GetType("System.String"));
+            this.dtDetalle1.Columns.Add("Tipo", System.Type.GetType("System.String"));
+            this.dtDetalle1.Columns.Add("Imprimir", System.Type.GetType("System.String"));
+            this.dtDetalle1.Columns.Add("Barra", System.Type.GetType("System.String"));
+            this.dtDetalle1.Columns.Add("Estado", System.Type.GetType("System.String"));
+
+            //this.dataListadoDetalle.DataSource = this.dtDetalle;
         }
 
         private void crearTablaMenu()
@@ -2666,7 +2698,7 @@ namespace CapaPresentacion
                 {
                     try
                     {
-    
+
                         int cantidad, cantidadActual;
                         decimal descuentoTotal = Convert.ToDecimal(this.txtDescuento.Text.Trim());
                         if (this.txtCantidad.Text.Equals("0"))
@@ -2689,49 +2721,60 @@ namespace CapaPresentacion
 
                             if (this.lblIdVenta.Text != "0")
                             {
+                                //int r = cantFilas;
 
-                                //foreach (DataRow row in dtDetalleVenta.Rows)
-                                //{
+                                // string tipoPro = Convert.ToString(rowProducto[3].ToString());
+                                for (int r = cantFilas; r < dataListadoDetalle.Rows.Count; r++)
+                                //for (int r= cantFilas; r < dataListadoDetalle.Rows.Count; r++)
+                                // foreach (DataRow row in dtDetalle.Rows)
+                                {
 
-
-                                    string tipoPro = Convert.ToString(rowProducto[3].ToString());
-                                    for (int r = cantFilas; r < dataListadoDetalle.Rows.Count; r++)
+                                    int cod1 = Convert.ToInt32(dataListadoDetalle.Rows[r].Cells[0].Value);
+                                    int cod2 = Convert.ToInt32(rowProducto[0].ToString());
+                                    if ((cod1 == cod2))
                                     {
-                                        if ((Convert.ToInt32(dtDetalleVenta.Rows[r][0]) == Convert.ToInt32(rowProducto[0].ToString())))
+                                        /*
+                                        cantidadActual = Convert.ToInt32(row["Cant"]);
+                                        //cantidadActual = Convert.ToInt32(dtDetalleVenta.Rows[r]["Cant"].ToString());
+                                        row["Cant"] = cantidadActual + cantidad;
+                                        decimal subTotal = (cantidadActual + cantidad) * Convert.ToDecimal(rowProducto[2].ToString());
+                                        decimal subTotalActual = Convert.ToDecimal(row["Importe"]);
+                                        row["Importe"] = subTotal - ((cantidadActual + cantidad) * Convert.ToDecimal(rowProducto[6].ToString()));
+                                        row["Descuento"] = (cantidadActual + cantidad) * Convert.ToDecimal(rowProducto[6].ToString());
+                                        row["Tipo"] = rowProducto[3].ToString();
+                                        totalPagado = totalPagado + subTotal - subTotalActual;
+                                        row["Imprimir"] = rowProducto[4].ToString();
+                                        row["Barra"] = "0";
+                                        row["Estado"] = "Pedido";*/
+                                        cantidadActual = Convert.ToInt32(dataListadoDetalle.Rows[r].Cells[2].Value);
+                                        this.dataListadoDetalle[2, r].Value = cantidadActual + cantidad;
+                                        decimal subTotal = (cantidadActual + cantidad) * Convert.ToDecimal(rowProducto[2].ToString());
+                                        decimal subTotalActual = Convert.ToDecimal(dataListadoDetalle.Rows[r].Cells[5].Value);
+                                        this.dataListadoDetalle[5, r].Value = subTotal - ((cantidadActual + cantidad) * Convert.ToDecimal(rowProducto[6].ToString()));
+                                        this.dataListadoDetalle[6, r].Value = (cantidadActual + cantidad) * Convert.ToDecimal(rowProducto[6].ToString());
+                                        // this.dtDetalleVenta.Rows.InsertAt(row, cantFilas);
+                                        //this.dtDetalleVenta.Rows.InsertAt(row, cantFilas);
+                                        decimal dctoTotProm = 0, subTotal20 = 0;
+                                        int cantidad20 = 0;
+
+                                        for (int p = 0; p < dataListadoDetalle.Rows.Count; p++)
                                         {
-
-                                            cantidadActual = Convert.ToInt32(row["Cant"]);
-                                            //cantidadActual = Convert.ToInt32(dtDetalleVenta.Rows[r]["Cant"].ToString());
-                                            row["Cant"] = cantidadActual + cantidad;
-                                            decimal subTotal = (cantidadActual + cantidad) * Convert.ToDecimal(rowProducto[2].ToString());
-                                            decimal subTotalActual = Convert.ToDecimal(row["Importe"]);
-                                            row["Importe"] = subTotal - ((cantidadActual + cantidad) * Convert.ToDecimal(rowProducto[6].ToString()));
-                                            row["Descuento"] = (cantidadActual + cantidad) * Convert.ToDecimal(rowProducto[6].ToString());
-                                            row["Tipo"] = rowProducto[3].ToString();
-                                            totalPagado = totalPagado + subTotal - subTotalActual;
-                                            row["Imprimir"] = rowProducto[4].ToString();
-                                            row["Barra"] = "0";
-                                            row["Estado"] = "Pedido";
-
-                                            decimal dctoTotProm = 0, subTotal20 = 0, total20 = 0;
-                                            int cantidad20 = 0;
-
-                                            for (int p = 0; p < dataListadoDetalle.Rows.Count; p++)
-                                            {
-                                                dctoTotProm = dctoTotProm + Convert.ToDecimal(dataListadoDetalle.Rows[p].Cells["Descuento"].Value.ToString());
-                                                cantidad20 = Convert.ToInt32(dataListadoDetalle.Rows[p].Cells["Cant"].Value.ToString());
-                                                subTotal20 = subTotal20 + (cantidad20 * Convert.ToDecimal(dataListadoDetalle.Rows[p].Cells["Precio_Un"].Value.ToString()));
-                                            }
-                                            this.txtDescuento.Text = dctoTotProm.ToString();
-                                            descuentoTotal = Convert.ToDecimal(this.txtDescuento.Text);
-                                            this.txtSubTotal.Text = subTotal20.ToString("#0.00#");
-                                            this.txtTotalPagado.Text = (subTotal20 - descuentoTotal).ToString("#0.00#");
-                                            registrar = false;
-                                            this.dataListadoDetalle.Refresh();
-                                            break;
-
+                                            dctoTotProm = dctoTotProm + Convert.ToDecimal(dataListadoDetalle.Rows[p].Cells["Descuento"].Value.ToString());
+                                            cantidad20 = Convert.ToInt32(dataListadoDetalle.Rows[p].Cells["Cant"].Value.ToString());
+                                            subTotal20 = subTotal20 + (cantidad20 * Convert.ToDecimal(dataListadoDetalle.Rows[p].Cells["Precio_Un"].Value.ToString()));
                                         }
+                                        this.txtDescuento.Text = dctoTotProm.ToString();
+                                        descuentoTotal = Convert.ToDecimal(this.txtDescuento.Text);
+                                        this.txtSubTotal.Text = subTotal20.ToString("#0.00#");
+                                        this.txtTotalPagado.Text = (subTotal20 - descuentoTotal).ToString("#0.00#");
+                                        registrar = false;
+                                        this.dataListadoDetalle.Refresh();
+
+                                        break;
+
                                     }
+
+                                }
 
 
                                 //}
@@ -2748,6 +2791,7 @@ namespace CapaPresentacion
                                     this.txtTotalPagado.Text = (totalPagado - descuentoTotal).ToString("#0.00#");
 
                                     row = this.dtDetalleVenta.NewRow();
+                                    // row = this.dtDetalle1.NewRow();
                                     row["Cod"] = Convert.ToInt32(rowProducto[0].ToString());
                                     row["Descripcion"] = rowProducto[1].ToString();
                                     row["Cant"] = cantidad;
@@ -2758,9 +2802,26 @@ namespace CapaPresentacion
                                     row["Tipo"] = rowProducto[3].ToString();
                                     row["Imprimir"] = rowProducto[4].ToString();
                                     row["Estado"] = "Pedido";
-                                    this.dtDetalleVenta.Rows.Add(row);
-                                    this.dataListadoDetalle.DataSource = dtDetalleVenta;
 
+                                    row1 = this.dtDetalle.NewRow();
+                                    // row = this.dtDetalle1.NewRow();
+                                    row1["Cod"] = Convert.ToInt32(rowProducto[0].ToString());
+                                    row1["Descripcion"] = rowProducto[1].ToString();
+                                    row1["Cant"] = cantidad;
+                                    row1["Precio_Un"] = Convert.ToDecimal(rowProducto[2].ToString());
+                                    row1["Importe"] = subTotal - cantidad * Convert.ToDecimal(rowProducto[6].ToString());
+                                    row1["Nota"] = "";
+                                    row1["Descuento"] = cantidad * Convert.ToDecimal(rowProducto[6].ToString());
+                                    row1["Tipo"] = rowProducto[3].ToString();
+                                    row1["Imprimir"] = rowProducto[4].ToString();
+                                    row1["Estado"] = "Pedido";
+
+
+                                    this.dtDetalleVenta.Rows.Add(row);
+                                    // this.dtDetalleVenta.Rows.InsertAt(row, cantFilas);
+                                    this.dtDetalle.Rows.Add(row1);
+                                    this.dataListadoDetalle.DataSource = dtDetalleVenta;
+                                    // this.dataListadoDetalle.DataSource = dtDetalle;
                                     this.dataListadoDetalle.ClearSelection();
                                     this.txtCantidad.Text = "";
 
@@ -2772,6 +2833,7 @@ namespace CapaPresentacion
                                     }
                                     this.txtDescuento.Text = dctoTotProm.ToString();
                                     this.dataListadoDetalle.Select();
+                                    banderaRows++;
 
                                 }
 
@@ -2799,7 +2861,7 @@ namespace CapaPresentacion
                                         row["Barra"] = "0";
                                         row["Estado"] = "Pedido";
 
-                                        decimal dctoTotProm = 0, subTotal20 = 0, total20 = 0;
+                                        decimal dctoTotProm = 0, subTotal20 = 0;
                                         int cantidad20 = 0;
 
                                         for (int p = 0; p < dataListadoDetalle.Rows.Count; p++)
@@ -2847,7 +2909,7 @@ namespace CapaPresentacion
                                     this.dtDetalle.Rows.Add(row);
                                     this.dataListadoDetalle.ClearSelection();
                                     this.txtCantidad.Text = "";
-                                    decimal dctoTotProm = 0, subTotal20 = 0, total20 = 0;
+                                    decimal dctoTotProm = 0, subTotal20 = 0;
                                     int cantidad20 = 0;
 
                                     for (int p = 0; p < dataListadoDetalle.Rows.Count; p++)
@@ -3055,15 +3117,17 @@ namespace CapaPresentacion
             this.plProductos.AutoScroll = false;
             if (this.lblIdVenta.Text != "0")
             {
+                banderaRows = 0;
                 mostrarDetalleVenta();
                 mostrarDetallePedido();
+                crearTabla1();
                 this.btnActualizarCantidad.Enabled = false;
                 this.btnImprimirComanda.Enabled = true;
                 this.dataListadoDetalle.Select();
                 this.btnLimpiar.Enabled = true;
                 this.btnReservar.Enabled = false;
                 cantFilas = dataListadoDetalle.Rows.Count;
-                
+
             }
             else
             {

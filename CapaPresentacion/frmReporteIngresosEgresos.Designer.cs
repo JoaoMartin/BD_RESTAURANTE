@@ -253,7 +253,7 @@
             this.lblBandera.AutoSize = true;
             this.lblBandera.Font = new System.Drawing.Font("Roboto", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBandera.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblBandera.Location = new System.Drawing.Point(944, 267);
+            this.lblBandera.Location = new System.Drawing.Point(699, 290);
             this.lblBandera.Name = "lblBandera";
             this.lblBandera.Size = new System.Drawing.Size(15, 18);
             this.lblBandera.TabIndex = 119;
@@ -265,7 +265,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1168, 519);
-            this.Controls.Add(this.lblBandera);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtUtilidad);
             this.Controls.Add(this.label25);
@@ -278,6 +277,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataListado);
+            this.Controls.Add(this.lblBandera);
             this.Font = new System.Drawing.Font("Roboto", 9.230769F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

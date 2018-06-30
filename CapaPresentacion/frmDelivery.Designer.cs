@@ -447,6 +447,7 @@
             // 
             this.plProductos.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.plProductos.Controls.Add(this.label4);
+            this.plProductos.Controls.Add(this.dgvDetalleVentaMenu);
             this.plProductos.Location = new System.Drawing.Point(600, 286);
             this.plProductos.Name = "plProductos";
             this.plProductos.Size = new System.Drawing.Size(937, 313);
@@ -1369,12 +1370,13 @@
             this.dgvDetalleVentaMenu.AllowUserToAddRows = false;
             this.dgvDetalleVentaMenu.AllowUserToDeleteRows = false;
             this.dgvDetalleVentaMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDetalleVentaMenu.Location = new System.Drawing.Point(1554, 590);
+            this.dgvDetalleVentaMenu.Location = new System.Drawing.Point(790, 153);
             this.dgvDetalleVentaMenu.Name = "dgvDetalleVentaMenu";
             this.dgvDetalleVentaMenu.ReadOnly = true;
             this.dgvDetalleVentaMenu.RowTemplate.Height = 24;
             this.dgvDetalleVentaMenu.Size = new System.Drawing.Size(10, 74);
             this.dgvDetalleVentaMenu.TabIndex = 131;
+            this.dgvDetalleVentaMenu.Visible = false;
             // 
             // frmDelivery
             // 
@@ -1382,7 +1384,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1593, 839);
-            this.Controls.Add(this.dgvDetalleVentaMenu);
             this.Controls.Add(this.dgvBanderaMenu);
             this.Controls.Add(this.dgvDetalleMenu);
             this.Controls.Add(this.groupBox3);

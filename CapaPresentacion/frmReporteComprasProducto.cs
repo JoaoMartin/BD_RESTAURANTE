@@ -22,7 +22,7 @@ namespace CapaPresentacion
 
         private void cargarProducto()
         {
-            cbProducto.DataSource = NProducto.MostrarInsumo_Articulo();
+            cbProducto.DataSource = NProducto.Mostrar();
             cbProducto.ValueMember = "Codigo";
             cbProducto.DisplayMember = "Nombre";
             cbProducto.SelectedIndex = -1;

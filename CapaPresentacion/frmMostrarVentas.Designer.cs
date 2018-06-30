@@ -99,7 +99,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1136, 692);
+            this.label3.Location = new System.Drawing.Point(957, 689);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 18);
@@ -110,7 +110,7 @@
             // 
             this.lblSumaTotal.AutoSize = true;
             this.lblSumaTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSumaTotal.Location = new System.Drawing.Point(1225, 692);
+            this.lblSumaTotal.Location = new System.Drawing.Point(1046, 687);
             this.lblSumaTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSumaTotal.Name = "lblSumaTotal";
             this.lblSumaTotal.Size = new System.Drawing.Size(54, 20);

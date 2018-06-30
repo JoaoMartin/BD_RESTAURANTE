@@ -615,6 +615,13 @@ namespace CapaPresentacion
                      Convert.ToDecimal(this.lblIgv.Text), "EMITIDA", Convert.ToDecimal(this.lblTotal.Text), efectivo,
                      tarjeta, 00.00m, dtDetalle, vuelto, frmVenta.f1.dtDetalleMenu,
                      DateTime.Now, 00.00m, Convert.ToInt32(frmPrincipal.f1.lblIdUsuario.Text),lblObs.Text, "", "", "", lblClase.Text);
+                    }else if(rbCortesia.Checked == true)
+                    {
+                        rpta = NVenta.InsertarPedidoPagado(idCliente, Convert.ToInt32(this.lblIdMesa.Text), DateTime.Now, estadoVenta,
+                    formaPago, Convert.ToDecimal(this.lblDctoGeneral.Text.Trim()), Convert.ToInt32(this.lblIdUsuario.Text), "CS", 1, "CORTESIA", 1,
+                    Convert.ToDecimal(this.lblIgv.Text), "EMITIDA", Convert.ToDecimal(this.lblTotal.Text), efectivo,
+                    tarjeta, 00.00m, dtDetalle, vuelto, frmVenta.f1.dtDetalleMenu,
+                    DateTime.Now, 00.00m, Convert.ToInt32(frmPrincipal.f1.lblIdUsuario.Text), lblObs.Text, "", "", "", lblClase.Text);
                     }
 
                     else
@@ -699,6 +706,13 @@ namespace CapaPresentacion
 
 
                             this.Facturador(Convert.ToInt32(rpta), dgv);
+                        }else if(rbCortesia.Checked == true)
+                        {
+                            NImprimir_Comprobante.imprimirCom(Convert.ToInt32(rpta), "CORTESIA", this.txtNombre.Text.Trim(), this.txtDireccion.Text.Trim(),
+                                       this.txtDocumento.Text.Trim(), frmSepararCuenta.f1.lblTrabajador.Text, frmSepararCuenta.f1.lblSalon.Text,
+                                       frmSepararCuenta.f1.lblMesa.Text, dgv, this.lblDescuento.Text, this.lblDctoGeneral.Text,
+                                       this.lblSubTotal.Text, this.lblIgv.Text, this.lblTotal.Text, efectivo1, vuelto1, tarjeta1, formaPago1, modoProd,
+                                       "00.00", "", NAliento.MensajeAliento());
                         }
                         if (cbPaga.Checked)
                         {
@@ -793,6 +807,13 @@ namespace CapaPresentacion
                                              dtDetalle, vuelto, frmVenta.f1.dtDetalleMenu,
                                              DateTime.Now, 00.00m, Convert.ToInt32(this.lblIdUsuario.Text),lblObs.Text, "", "", "", lblClase.Text);
 
+                }else if (rbCortesia.Checked == true)
+                {
+                    rpta = NVenta.InsertarPedidoPagado(idCliente, Convert.ToInt32(this.lblIdMesa.Text), DateTime.Now, "CORTESIA", formaPago, Convert.ToDecimal(this.lblDctoGeneral.Text.Trim())
+                                            , Convert.ToInt32(frmPrincipal.f1.lblIdUsuario.Text), "CS", 1, "CORTESIA", 1, Convert.ToDecimal(this.lblIgv.Text), "EMITIDA",
+                                            Convert.ToDecimal(this.lblTotal.Text), efectivo, tarjeta, 00.00m,
+                                            dtDetalle, vuelto, frmVenta.f1.dtDetalleMenu,
+                                            DateTime.Now, 00.00m, Convert.ToInt32(this.lblIdUsuario.Text), lblObs.Text, "", "", "", lblClase.Text);
                 }
                 else if (rbCreditoEmitido.Checked == true)
                 {
@@ -893,6 +914,13 @@ namespace CapaPresentacion
                         if (rbEfectivo.Checked == true || rbTarjeta.Checked == true || rbMixto.Checked == true || rbCreditoEmitido.Checked == true || rbConsumoT.Checked == true)
                         {
                             NImprimir_Comprobante.imprimirCom(Convert.ToInt32(this.lblIdVenta.Text), tipoCompr, this.txtNombre.Text.Trim(), this.txtDireccion.Text.Trim(),
+                                                                     this.txtDocumento.Text.Trim(), frmSepararCuenta.f1.lblTrabajador.Text, frmSepararCuenta.f1.lblSalon.Text,
+                                                                     frmSepararCuenta.f1.lblMesa.Text, dgv, this.lblDescuento.Text, this.lblDctoGeneral.Text,
+                                                                     this.lblSubTotal.Text, this.lblIgv.Text, this.lblTotal.Text, efectivo1, vuelto1, tarjeta1, formaPago1, modoProd, "00.00",
+                                                                     "", NAliento.MensajeAliento());
+                        }else if(rbCortesia.Checked == true)
+                        {
+                            NImprimir_Comprobante.imprimirCom(Convert.ToInt32(this.lblIdVenta.Text), "CORTESIA", this.txtNombre.Text.Trim(), this.txtDireccion.Text.Trim(),
                                                                      this.txtDocumento.Text.Trim(), frmSepararCuenta.f1.lblTrabajador.Text, frmSepararCuenta.f1.lblSalon.Text,
                                                                      frmSepararCuenta.f1.lblMesa.Text, dgv, this.lblDescuento.Text, this.lblDctoGeneral.Text,
                                                                      this.lblSubTotal.Text, this.lblIgv.Text, this.lblTotal.Text, efectivo1, vuelto1, tarjeta1, formaPago1, modoProd, "00.00",

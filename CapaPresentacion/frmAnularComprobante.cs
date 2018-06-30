@@ -33,7 +33,7 @@ namespace CapaPresentacion
                     {
                         NDetalleVenta.ActualizarStockProd_Anulada(Convert.ToInt32(dtDetalle.Rows[i][0].ToString()));
                         DataTable dtCompuesto = new DataTable();
-                        dtCompuesto = NVenta.mostrarDetalleVenta(Convert.ToInt32(frmMostrarVentas.f1.lblIdVenta.Text));
+                        dtCompuesto = NVenta.mostrarDetalleVentaAnulada(Convert.ToInt32(frmMostrarVentas.f1.lblIdVenta.Text));
 
                         if (dtCompuesto.Rows[i][8].ToString() == "C")
                         {
@@ -196,7 +196,7 @@ namespace CapaPresentacion
 
                             }
                             NFacturador.bajaComprobante(frmCreditosPendientes.f1.lblTipoComprobante.Text, fechaConv, DateTime.Now.ToString("yyyy-MM-dd"), tipoDoc,
-                                frmCreditosPendientes.f1.lblCorrelativo.Text,this.txtDescripcion.Text, dtCorrelativo.Rows[0][0].ToString());
+                                frmCreditosPendientes.f1.lblCorrelativo.Text, this.txtDescripcion.Text, dtCorrelativo.Rows[0][0].ToString());
                             MessageBox.Show("Se anuló correctamente");
                             frmCreditosPendientes.f1.Mostrar();
                             frmCreditosPendientes.f1.btnAnular.Enabled = false;
@@ -234,9 +234,15 @@ namespace CapaPresentacion
                             this.txtDescripcion.Text, dtCorrelativo.Rows[0][0].ToString());
                         NDelivery.Eliminar(Convert.ToInt32(frmCobroDelivery.f1.lblIdVenta.Text));
                         NImprimirComanda.imprimirCom(frmCobroDelivery.f1.lblRepartidos.Text, "DELIVERY", "DELIVERY", frmCobroDelivery.f1.dataCocina, "COMANDA ADICIONAL");
-                        MessageBox.Show("Se anuló correctamente");
-                        this.Hide();
-                        frmCobroDelivery.f1.Hide();
+
+                        if (cbOrigen.Checked)
+                        {
+                            NCaja.Insertar(Convert.ToInt32(frmPrincipal.f1.lblIdUsuario.Text), "1", "INGRESO", Convert.ToDecimal(lblVuelto.Text), "ANULACION DELIVERY" + txtDescripcion.Text, "EFECTIVO");
+                            MessageBox.Show("Se anuló correctamente");
+                            this.Close();
+                            frmCobroDelivery.f1.Mostrar();
+                        }
+
                     }
                 }
             }

@@ -43,38 +43,38 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CapaDatos.dll" size="193536">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CapaDatos.dll" size="194048">
       <assemblyIdentity name="CapaDatos" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>mp41Orh6CxsZ7varSq6gqsiyjWyHtuT7CoFJ0HVqr50=</dsig:DigestValue>
+        <dsig:DigestValue>LIuyLNpfrpXh7umtpPscjKy1UAb46Vk+zDXntpgtKC8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CapaNegocios.dll" size="92160">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CapaNegocios.dll" size="92672">
       <assemblyIdentity name="CapaNegocios" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>V5G/lnb/X4/rFSJvMTY9Q5WQa1bYwd+oAoLqthvlgYk=</dsig:DigestValue>
+        <dsig:DigestValue>ULoCif/FfqM/d5cQanLrC9qsStVSrPZqDLIFRuasPV0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CapaPresentacion.dll" size="8685568">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CapaPresentacion.dll" size="8706560">
       <assemblyIdentity name="CapaPresentacion" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>96uotOl5XlX0jPwxSfU7snxDaIt8FYp4LhHc7eEp89E=</dsig:DigestValue>
+        <dsig:DigestValue>DcpXSHjVeqW+pb69zPNQ6HozX0JmdnhNdc9F1SjY/50=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -290,7 +290,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>FPMVa/uv4tmekHBGguY55h20E6ru4SGhUY/wzQGeoTQ=</dsig:DigestValue>
+        <dsig:DigestValue>yPrgUrmAll5somhGbZd5yuWQ69Qo4rrLqKZGGMpV5qg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

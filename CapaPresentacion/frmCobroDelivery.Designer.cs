@@ -62,6 +62,7 @@
             this.dataListado.AllowUserToAddRows = false;
             this.dataListado.AllowUserToDeleteRows = false;
             this.dataListado.AllowUserToOrderColumns = true;
+            this.dataListado.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataListado.Location = new System.Drawing.Point(12, 92);
             this.dataListado.MultiSelect = false;
@@ -76,11 +77,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(524, 36);
+            this.label1.Font = new System.Drawing.Font("Roboto", 14.15385F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Navy;
+            this.label1.Location = new System.Drawing.Point(549, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(222, 25);
+            this.label1.Size = new System.Drawing.Size(266, 30);
             this.label1.TabIndex = 9;
             this.label1.Text = "DELIVERY POR COBRAR";
             // 
@@ -136,9 +137,9 @@
             // lblIdVenta
             // 
             this.lblIdVenta.AutoSize = true;
-            this.lblIdVenta.Location = new System.Drawing.Point(949, 43);
+            this.lblIdVenta.Location = new System.Drawing.Point(771, 307);
             this.lblIdVenta.Name = "lblIdVenta";
-            this.lblIdVenta.Size = new System.Drawing.Size(17, 19);
+            this.lblIdVenta.Size = new System.Drawing.Size(15, 18);
             this.lblIdVenta.TabIndex = 16;
             this.lblIdVenta.Text = "0";
             this.lblIdVenta.Visible = false;
@@ -146,9 +147,9 @@
             // lblEstado
             // 
             this.lblEstado.AutoSize = true;
-            this.lblEstado.Location = new System.Drawing.Point(1100, 43);
+            this.lblEstado.Location = new System.Drawing.Point(922, 307);
             this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(17, 19);
+            this.lblEstado.Size = new System.Drawing.Size(15, 18);
             this.lblEstado.TabIndex = 17;
             this.lblEstado.Text = "0";
             this.lblEstado.Visible = false;
@@ -156,9 +157,9 @@
             // lblIdUsuario
             // 
             this.lblIdUsuario.AutoSize = true;
-            this.lblIdUsuario.Location = new System.Drawing.Point(824, 43);
+            this.lblIdUsuario.Location = new System.Drawing.Point(646, 307);
             this.lblIdUsuario.Name = "lblIdUsuario";
-            this.lblIdUsuario.Size = new System.Drawing.Size(17, 19);
+            this.lblIdUsuario.Size = new System.Drawing.Size(15, 18);
             this.lblIdUsuario.TabIndex = 18;
             this.lblIdUsuario.Text = "0";
             this.lblIdUsuario.Visible = false;
@@ -166,9 +167,9 @@
             // lblVuelto
             // 
             this.lblVuelto.AutoSize = true;
-            this.lblVuelto.Location = new System.Drawing.Point(1356, 42);
+            this.lblVuelto.Location = new System.Drawing.Point(1178, 306);
             this.lblVuelto.Name = "lblVuelto";
-            this.lblVuelto.Size = new System.Drawing.Size(17, 19);
+            this.lblVuelto.Size = new System.Drawing.Size(15, 18);
             this.lblVuelto.TabIndex = 19;
             this.lblVuelto.Text = "0";
             this.lblVuelto.Visible = false;
@@ -177,9 +178,9 @@
             // lblTipoComprobante
             // 
             this.lblTipoComprobante.AutoSize = true;
-            this.lblTipoComprobante.Location = new System.Drawing.Point(38, 42);
+            this.lblTipoComprobante.Location = new System.Drawing.Point(156, 266);
             this.lblTipoComprobante.Name = "lblTipoComprobante";
-            this.lblTipoComprobante.Size = new System.Drawing.Size(17, 19);
+            this.lblTipoComprobante.Size = new System.Drawing.Size(15, 18);
             this.lblTipoComprobante.TabIndex = 20;
             this.lblTipoComprobante.Text = "0";
             this.lblTipoComprobante.Visible = false;
@@ -187,9 +188,9 @@
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(142, 43);
+            this.lblTotal.Location = new System.Drawing.Point(260, 267);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(17, 19);
+            this.lblTotal.Size = new System.Drawing.Size(15, 18);
             this.lblTotal.TabIndex = 21;
             this.lblTotal.Text = "0";
             this.lblTotal.Visible = false;
@@ -197,9 +198,9 @@
             // lblIdCliente
             // 
             this.lblIdCliente.AutoSize = true;
-            this.lblIdCliente.Location = new System.Drawing.Point(38, 9);
+            this.lblIdCliente.Location = new System.Drawing.Point(156, 233);
             this.lblIdCliente.Name = "lblIdCliente";
-            this.lblIdCliente.Size = new System.Drawing.Size(17, 19);
+            this.lblIdCliente.Size = new System.Drawing.Size(15, 18);
             this.lblIdCliente.TabIndex = 22;
             this.lblIdCliente.Text = "0";
             this.lblIdCliente.Visible = false;
@@ -207,9 +208,9 @@
             // lblCliente
             // 
             this.lblCliente.AutoSize = true;
-            this.lblCliente.Location = new System.Drawing.Point(394, 55);
+            this.lblCliente.Location = new System.Drawing.Point(512, 279);
             this.lblCliente.Name = "lblCliente";
-            this.lblCliente.Size = new System.Drawing.Size(17, 19);
+            this.lblCliente.Size = new System.Drawing.Size(15, 18);
             this.lblCliente.TabIndex = 23;
             this.lblCliente.Text = "0";
             this.lblCliente.Visible = false;
@@ -217,9 +218,9 @@
             // lblDireccion
             // 
             this.lblDireccion.AutoSize = true;
-            this.lblDireccion.Location = new System.Drawing.Point(383, 9);
+            this.lblDireccion.Location = new System.Drawing.Point(501, 233);
             this.lblDireccion.Name = "lblDireccion";
-            this.lblDireccion.Size = new System.Drawing.Size(17, 19);
+            this.lblDireccion.Size = new System.Drawing.Size(15, 18);
             this.lblDireccion.TabIndex = 24;
             this.lblDireccion.Text = "0";
             this.lblDireccion.Visible = false;
@@ -227,9 +228,9 @@
             // lblNroDoc
             // 
             this.lblNroDoc.AutoSize = true;
-            this.lblNroDoc.Location = new System.Drawing.Point(266, 9);
+            this.lblNroDoc.Location = new System.Drawing.Point(384, 233);
             this.lblNroDoc.Name = "lblNroDoc";
-            this.lblNroDoc.Size = new System.Drawing.Size(17, 19);
+            this.lblNroDoc.Size = new System.Drawing.Size(15, 18);
             this.lblNroDoc.TabIndex = 25;
             this.lblNroDoc.Text = "0";
             this.lblNroDoc.Visible = false;
@@ -237,9 +238,9 @@
             // lblRepartidos
             // 
             this.lblRepartidos.AutoSize = true;
-            this.lblRepartidos.Location = new System.Drawing.Point(433, 36);
+            this.lblRepartidos.Location = new System.Drawing.Point(551, 260);
             this.lblRepartidos.Name = "lblRepartidos";
-            this.lblRepartidos.Size = new System.Drawing.Size(17, 19);
+            this.lblRepartidos.Size = new System.Drawing.Size(15, 18);
             this.lblRepartidos.TabIndex = 26;
             this.lblRepartidos.Text = "0";
             this.lblRepartidos.Visible = false;
@@ -263,9 +264,9 @@
             // lblDctoInd
             // 
             this.lblDctoInd.AutoSize = true;
-            this.lblDctoInd.Location = new System.Drawing.Point(242, 70);
+            this.lblDctoInd.Location = new System.Drawing.Point(360, 294);
             this.lblDctoInd.Name = "lblDctoInd";
-            this.lblDctoInd.Size = new System.Drawing.Size(17, 19);
+            this.lblDctoInd.Size = new System.Drawing.Size(15, 18);
             this.lblDctoInd.TabIndex = 28;
             this.lblDctoInd.Text = "0";
             this.lblDctoInd.Visible = false;
@@ -311,9 +312,9 @@
             // lblTelefono
             // 
             this.lblTelefono.AutoSize = true;
-            this.lblTelefono.Location = new System.Drawing.Point(999, 20);
+            this.lblTelefono.Location = new System.Drawing.Point(821, 284);
             this.lblTelefono.Name = "lblTelefono";
-            this.lblTelefono.Size = new System.Drawing.Size(17, 19);
+            this.lblTelefono.Size = new System.Drawing.Size(15, 18);
             this.lblTelefono.TabIndex = 30;
             this.lblTelefono.Text = "0";
             this.lblTelefono.Visible = false;
@@ -324,10 +325,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1518, 649);
-            this.Controls.Add(this.lblTelefono);
+            this.Controls.Add(this.btnConfirmar);
+            this.Controls.Add(this.btnEnviar);
+            this.Controls.Add(this.btnAnular);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dataListado);
             this.Controls.Add(this.dataCocina);
-            this.Controls.Add(this.lblDctoInd);
             this.Controls.Add(this.dataDetalle);
+            this.Controls.Add(this.lblTelefono);
+            this.Controls.Add(this.lblVuelto);
+            this.Controls.Add(this.lblIdUsuario);
+            this.Controls.Add(this.lblEstado);
+            this.Controls.Add(this.lblIdVenta);
+            this.Controls.Add(this.lblDctoInd);
             this.Controls.Add(this.lblRepartidos);
             this.Controls.Add(this.lblNroDoc);
             this.Controls.Add(this.lblDireccion);
@@ -335,15 +345,6 @@
             this.Controls.Add(this.lblIdCliente);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.lblTipoComprobante);
-            this.Controls.Add(this.lblVuelto);
-            this.Controls.Add(this.lblIdUsuario);
-            this.Controls.Add(this.lblEstado);
-            this.Controls.Add(this.lblIdVenta);
-            this.Controls.Add(this.btnConfirmar);
-            this.Controls.Add(this.btnEnviar);
-            this.Controls.Add(this.btnAnular);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataListado);
             this.Font = new System.Drawing.Font("Roboto", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -352,6 +353,7 @@
             this.Text = ".:: DELIVERY POR COBRAR ::.";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmCobroDelivery_FormClosed);
             this.Load += new System.EventHandler(this.frmCobroDelivery_Load);
+            this.Click += new System.EventHandler(this.frmCobroDelivery_Click);
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataDetalle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataCocina)).EndInit();

@@ -106,23 +106,27 @@ namespace CapaPresentacion
         private void ocultarColumnas()
         {
             this.dataListado.Columns[0].Visible = false;
+            this.dataListado.Columns[7].Visible = false;
+            this.dataListado.Columns[8].Visible = false;
             this.dataListado.Columns[14].Visible = false;
             this.dataListado.Columns[15].Visible = false;
             this.dataListado.Columns[16].Visible = false;
             this.dataListado.Columns[17].Visible = false;
             this.dataListado.Columns[18].Visible = false;
+            this.dataListado.Columns[19].Visible = false;
+            this.dataListado.Columns[20].Visible = false;
             //  this.dataListado.Columns[1].Visible = false;
 
             //DataGridView1.Columns(1).Width = 150
-            this.dataListado.Columns[1].Width = 80;
-            this.dataListado.Columns[2].Width = 170;
-            this.dataListado.Columns[3].Width = 80;
-            this.dataListado.Columns[4].Width = 180;
-            this.dataListado.Columns[5].Width = 100;
-            this.dataListado.Columns[6].Width = 120;
-            this.dataListado.Columns[7].Width = 200;
+            this.dataListado.Columns[1].Width = 70;
+            this.dataListado.Columns[2].Width = 150;
+            this.dataListado.Columns[3].Width = 180;
+            this.dataListado.Columns[4].Width = 100;
+            this.dataListado.Columns[5].Width = 40;
+            this.dataListado.Columns[6].Width = 40;
+           // this.dataListado.Columns[7].Width = 200;
             this.dataListado.Columns[9].Width = 200;
-            this.dataListado.Columns[10].Width = 200;
+          //  this.dataListado.Columns[10].Width = 200;
 
             this.dataListado.RowTemplate.Height = 28;
             this.dataListado.ClearSelection();
@@ -217,6 +221,7 @@ namespace CapaPresentacion
             form.lblIdVenta.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Cod"].Value);
             form.lblTipo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Estado_Venta"].Value);
             form.ShowDialog();
+            form.dataListado.ClearSelection();
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)
